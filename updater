@@ -1,0 +1,47 @@
+#!/bin/bash
+#####
+# I run this script from time to time (as root)
+
+
+### UPDATE ###
+
+# Get the latest repository info
+zypper refresh
+# Make a nice list of available updates
+zypper lu
+# Auto-update everything
+zypper dup --no-allow-vendor-change -y 
+# In case some recommended packages were removed
+zypper install-new-recommends
+
+
+### OTHER ###
+
+# Refresh the database for 'locate'
+updatedb
+
+# Clean up temporary files to get more space
+rm -rf /tmp/*
+
+
+### BTRFS ###
+
+# Delete snapshots that are discarded by
+# /etc/snapper/configs/root -> NUMBER_LIMIT
+snapper cleanup number
+snapper cleanup empty-pre-post 
+
+# BTRFS balancer
+systemctl restart btrfsmaintenance-refresh
+/usr/share/btrfsmaintenance/btrfs-balance.sh
+#sudo btrfs fi df /
+
+echo -e "\n"
+
+
+# Finally, show processes that were affected by the update
+zypper ps -s
+
+
+# Leave
+exit 0
