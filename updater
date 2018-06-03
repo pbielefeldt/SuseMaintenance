@@ -1,47 +1,51 @@
 #!/bin/bash
 #####
-# I run this script from time to time (as root)
 
+# Den Refresh sollte er alleine machen, aber sicher ist sicher
+sudo zypper refresh
+# Listet moegliche Updates auf
+sudo zypper lu
+# Der Update-Prozess
+sudo zypper dup --no-allow-vendor-change -y 
+# Falls eigentlich erwartete Software entfernt wurde
+sudo zypper install-new-recommends
 
-### UPDATE ###
+# Temporaere Dateien entfernen
+sudo rm -rf /tmp/*
 
-# Get the latest repository info
-zypper refresh
-# Make a nice list of available updates
-zypper lu
-# Auto-update everything
-zypper dup --no-allow-vendor-change -y 
-# In case some recommended packages were removed
-zypper install-new-recommends
+# Datenbank von locate aktualisieren
+sudo updatedb
 
+# TRIM funktioniert nur, wenn in 
+# /etc/crypttab fuer die verschlusselten Platten die Option
+# 'discard' eingetragen wurde.
+# Ausserdem sollte in 
+# /etc/fstab ebenfalls 'discard' gesetzt sein
+# ... zumindest fuer XFS.
+#printf "\n/home wird getrimmt..."
+#sudo fstrim -v /home
 
-### OTHER ###
+# Delete old snapshots
+#sudo snapper cleanup timeline
+sudo snapper cleanup number
+sudo snapper cleanup empty-pre-post 
 
-# Refresh the database for 'locate'
-updatedb
-
-# Clean up temporary files to get more space
-rm -rf /tmp/*
-
-
-### BTRFS ###
-
-# Delete snapshots that are discarded by
-# /etc/snapper/configs/root -> NUMBER_LIMIT
-snapper cleanup number
-snapper cleanup empty-pre-post 
-
-# BTRFS balancer
-systemctl restart btrfsmaintenance-refresh
-/usr/share/btrfsmaintenance/btrfs-balance.sh
-#sudo btrfs fi df /
+# BTRFS balancer automatisieren
+echo -e "/ default subvolume:"
+sudo btrfs subvolume get-default /
+echo -e "\n"
+sudo systemctl restart btrfsmaintenance-refresh
+sudo /usr/share/btrfsmaintenance/btrfs-balance.sh
 
 echo -e "\n"
+# BTRFS Belegung anzeigen
+#sudo btrfs fi df /
 
+# Zeigt laufende Prozesse an, die von dem Update gestoert werden
+# sein koennten, gibt eine Entscheidungshilfe, ob ein Neustart
+# sinnvoll ist.
+sudo zypper ps -s
 
-# Finally, show processes that were affected by the update
-zypper ps -s
-
-
-# Leave
+# Verlassen...
+sudo -k
 exit 0
