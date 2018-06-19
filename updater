@@ -1,6 +1,11 @@
 #!/bin/bash
 #####
 
+# Delete old snapshots
+#sudo snapper cleanup timeline
+sudo snapper cleanup number
+sudo snapper cleanup empty-pre-post 
+
 # Den Refresh sollte er alleine machen, aber sicher ist sicher
 sudo zypper refresh
 # Listet moegliche Updates auf
@@ -25,11 +30,6 @@ sudo updatedb
 #printf "\n/home wird getrimmt..."
 #sudo fstrim -v /home
 
-# Delete old snapshots
-#sudo snapper cleanup timeline
-sudo snapper cleanup number
-sudo snapper cleanup empty-pre-post 
-
 # BTRFS balancer automatisieren
 echo -e "/ default subvolume:"
 sudo btrfs subvolume get-default /
@@ -39,7 +39,7 @@ sudo /usr/share/btrfsmaintenance/btrfs-balance.sh
 
 echo -e "\n"
 # BTRFS Belegung anzeigen
-#sudo btrfs fi df /
+sudo btrfs fi df /
 
 # Zeigt laufende Prozesse an, die von dem Update gestoert werden
 # sein koennten, gibt eine Entscheidungshilfe, ob ein Neustart
