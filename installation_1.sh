@@ -19,7 +19,7 @@ zypper ar -f http://download.opensuse.org/repositories/science/$DISTNAME/ "Scien
 #sudo zypper ar -f http://download.opensuse.org/repositories/Application:/Geo/$DISTNAME/ "Geo"
 zypper ar -f http://download.opensuse.org/repositories/Application:/Geo:/OpenCPN/$DISTNAME/ "openCPN/Geo"
 zypper ar -f http://download.opensuse.org/repositories/Application:/Geo/$DISTNAME/ "ZYGrib/Geo"
-zypper ar -f http://download.opensuse.org/repositories/isv:ownCloud:desktop/$DISTNAME/isv:ownCloud:desktop.repo "isvOwnCloud"
+#zypper ar -f http://download.opensuse.org/repositories/isv:ownCloud:desktop/$DISTNAME/isv:ownCloud:desktop.repo "isvOwnCloud"
 #zypper ar -r https://mega.nz/linux/MEGAsync/$DISTNAME/ "MegaSync"
 
 ### Changes to the system are only of continued effect if you trust the keys
@@ -28,59 +28,59 @@ zypper refresh
 
 ### Install software I like:
 zypper install \
-chromium chromium-pepper-flash \
+0ad \
+chromium \
 clisp \
-corebird \
-dropbox nautilus-extension-dropbox \
+#corebird \
+#dropbox nautilus-extension-dropbox \
 fetchmsttfonts \
-feedreader \
-git \
+git gitg \
 gnome-builder \
 gnome-logs \
+go go-doc \
 gummi \
 epiphany gnome-shell-search-provider-epiphany \
 htop \
 iotop \
 ipe \
-meld \
-mlocate \
-latexila texlive-units texlive-bbm texlive-bbm-macros texlive-boxedminipage texlive-animate\
+julia julia-examples \
+latexila \
+texlive-animate texlive-appendixnumberbeamer texlive-bbm texlive-bbm-macros texlive-boxedminipage texlive-units\
 libgda \
 links \
-MPlayer \
+meld \
+mlocate \
+OpenCPN-4.x-Base \
 owncloud-client \
 pandoc \
+pidgin libpurple-plugin-skypeweb \
 qt-creator \
 root \
 rhythmbox \
 screenfetch \
 sensors \
-skype4pidgin \
-subversion \
+soundconverter \
 supertuxkart \
-tlp \
 whois \
 wxMaxima \
-zygrib \
-0ad \
-gnome-session-wayland \
-#go go-doc \
-OpenCPN-4.x \
 xmoto \
-xournal
+xournal \
+zygrib \
+
 
 ### These were disabled for now since they aren't officially provided
+#feedreader \
 #guake \
 #gespeaker \
 
 ### disabled because unwanted at the moment...
-# 0ad \
 # blender \
-# go go-doc \
+# gnome-session-wayland \
 # gnome-nibbles \
-# OpenCPN-4.x \
+# skype4pidgin \
+# subversion \
+# tlp \
 # pitivi \
-# soundconverter \
 # xmoto \
 
 ### Some nice themes
