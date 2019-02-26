@@ -50,6 +50,7 @@ libgda \
 links \
 meld \
 mlocate \
+ncdu \
 OpenCPN-4.x-Base \
 owncloud-client \
 pandoc \
