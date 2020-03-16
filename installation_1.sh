@@ -46,7 +46,7 @@ ipe \
 julia julia-examples \
 latexila \
 texlive-scheme-basic \
-texlive-animate texlive-appendixnumberbeamer texlive-bbm texlive-bbm-macros texlive-boxedminipage texlive-fontspec texlive-newtx texlive-units texlive-xtab \
+texlive-animate texlive-appendixnumberbeamer texlive-bbm texlive-bbm-macros texlive-boxedminipage texlive-cleveref texlive-fontspec texlive-glossaries texlive-glossaries-english texlive-glossaries-german texlive-import texlive-newtx texlive-standalone texlive-todonotes texlive-units texlive-xtab \
 texlive-biber \
 libgda \
 links \
