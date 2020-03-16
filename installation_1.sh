@@ -45,7 +45,9 @@ iotop \
 ipe \
 julia julia-examples \
 latexila \
-texlive-animate texlive-appendixnumberbeamer texlive-bbm texlive-bbm-macros texlive-boxedminipage texlive-units\
+texlive-scheme-basic \
+texlive-animate texlive-appendixnumberbeamer texlive-bbm texlive-bbm-macros texlive-boxedminipage texlive-fontspec texlive-newtx texlive-units texlive-xtab \
+texlive-biber \
 libgda \
 links \
 meld \
