@@ -15,8 +15,12 @@ sudo zypper dup --no-allow-vendor-change -y
 # Falls eigentlich erwartete Software entfernt wurde
 sudo zypper install-new-recommends
 
+# Installierte Flatpaks aktualisieren
+sudo flatpak update --force-remove --assumeyes
+
 # Temporaere Dateien entfernen
 sudo rm -rf /tmp/*
+sudo rm -rf /var/tmp/*
 
 # Datenbank von locate aktualisieren
 sudo updatedb
@@ -36,6 +40,9 @@ sudo btrfs subvolume get-default /
 echo -e "\n"
 sudo systemctl restart btrfsmaintenance-refresh
 sudo /usr/share/btrfsmaintenance/btrfs-balance.sh
+
+# Snapshots zeigen
+sudo snapper list
 
 echo -e "\n"
 # BTRFS Belegung anzeigen
