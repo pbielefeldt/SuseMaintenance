@@ -6,53 +6,49 @@
 sudo snapper cleanup number
 sudo snapper cleanup empty-pre-post 
 
-# Den Refresh sollte er alleine machen, aber sicher ist sicher
-sudo zypper refresh
-# Listet moegliche Updates auf
-sudo zypper lu
-# Der Update-Prozess
-sudo zypper dup --no-allow-vendor-change -y 
-# Falls eigentlich erwartete Software entfernt wurde
-sudo zypper install-new-recommends
+# stop f*cking PackageKit from interfering the process
+sudo systemctl stop packagekit
+#sudo systemctl mask packagekit
 
-# Installierte Flatpaks aktualisieren
+# zypper should auto-refresh anyway, but hey …
+sudo zypper refresh
+# create an overview over all possible updates
+sudo zypper lu
+# best possible update command, I think
+sudo zypper dup --no-allow-vendor-change -y 
+# re-installs default packages
+#sudo zypper install-new-recommends
+
+# Flatpak has its own update mechanism, of course …
 sudo flatpak update --force-remove --assumeyes
 
-# Temporaere Dateien entfernen
+# now might be a good time to remove temporary files
 sudo rm -rf /tmp/*
 sudo rm -rf /var/tmp/*
+sudo rm -rf /var/tmp/*
+sudo rm -rf ~/.cache/evolution/tmp/*
+sudo rm -rf ~/.cache/gnome-builder/tags/share/flatpak/repo/tmp/*
 
-# Datenbank von locate aktualisieren
+# makes the database behind 'locate'
 sudo updatedb
 
-# TRIM funktioniert nur, wenn in 
-# /etc/crypttab fuer die verschlusselten Platten die Option
-# 'discard' eingetragen wurde.
-# Ausserdem sollte in 
-# /etc/fstab ebenfalls 'discard' gesetzt sein
-# ... zumindest fuer XFS.
-#printf "\n/home wird getrimmt..."
-#sudo fstrim -v /home
-
-# BTRFS balancer automatisieren
+# BTRFS balancer 
 echo -e "/ default subvolume:"
 sudo btrfs subvolume get-default /
 echo -e "\n"
 sudo systemctl restart btrfsmaintenance-refresh
 sudo /usr/share/btrfsmaintenance/btrfs-balance.sh
 
-# Snapshots zeigen
+# show the remaining BTRFS snapshots
 sudo snapper list
 
+# show how much disk space the BTRFS partition really occupies
 echo -e "\n"
-# BTRFS Belegung anzeigen
 sudo btrfs fi df /
 
-# Zeigt laufende Prozesse an, die von dem Update gestoert werden
-# sein koennten, gibt eine Entscheidungshilfe, ob ein Neustart
-# sinnvoll ist.
+# show if some processes are running that were update right now (→ restart)
 sudo zypper ps -s
 
-# Verlassen...
+# leave the super-user shell …
 sudo -k
 exit 0
