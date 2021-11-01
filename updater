@@ -21,6 +21,8 @@ sudo zypper dup --no-allow-vendor-change -y
 
 # Flatpak has its own update mechanism, of course …
 sudo flatpak update --force-remove --assumeyes
+sudo flatpak uninstall --unused --assumeyes
+sudo flatpak repair
 
 # now might be a good time to remove temporary files
 sudo rm -rf /tmp/*
