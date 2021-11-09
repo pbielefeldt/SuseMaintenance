@@ -1,7 +1,7 @@
 ### Before we start, update the system:
-sudo zypper ref
-sudo zypper lu
-sudo zypper up -y
+zypper ref
+zypper lu
+zypper up -y
 
 ### We need to know how the target distribution is named:
 export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
@@ -16,7 +16,7 @@ echo $DISTNAME
 zypper ar -f http://download.opensuse.org/repositories/games/$DISTNAME/ "Games"
 zypper ar -f http://download.opensuse.org/repositories/graphics/$DISTNAME/ "Graphics"
 zypper ar -f http://download.opensuse.org/repositories/science/$DISTNAME/ "Science"
-#sudo zypper ar -f http://download.opensuse.org/repositories/Application:/Geo/$DISTNAME/ "Geo"
+#zypper ar -f http://download.opensuse.org/repositories/Application:/Geo/$DISTNAME/ "Geo"
 zypper ar -f http://download.opensuse.org/repositories/Application:/Geo:/OpenCPN/$DISTNAME/ "openCPN/Geo"
 zypper ar -f http://download.opensuse.org/repositories/Application:/Geo/$DISTNAME/ "ZYGrib/Geo"
 
@@ -34,8 +34,6 @@ zypper install \
 0ad \
 chromium \
 clisp \
-#corebird \
-#dropbox nautilus-extension-dropbox \
 fetchmsttfonts \
 git gitg \
 gnome-builder \
@@ -62,9 +60,8 @@ OpenCPN-5.x-Base OpenCPN-weather_routing_pi \
 opi \
 owncloud-client \
 pandoc \
-pidgin libpurple-plugin-skypeweb \
 qt-creator \
-root \
+root6 \
 rhythmbox \
 screenfetch \
 sensors \
@@ -83,25 +80,20 @@ zygrib \
 #gespeaker \
 
 ### disabled because unwanted at the moment...
-# blender \
-# gnome-session-wayland \
-# gnome-nibbles \
-# skype4pidgin \
-# subversion \
-# tlp \
-# pitivi \
-# xmoto \
+#blender \
+#corebird \
+#dropbox nautilus-extension-dropbox \
+#gnome-session-wayland \
+#gnome-nibbles \
+#pidgin libpurple-plugin-skypeweb \
+#skype4pidgin \
+#subversion \
+#tlp \
+#pitivi \
+#xmoto \
 
 ### Some nice themes
-#sudo zypper in gtk3-metatheme-elementary
-#sudo zypper in gtk3-metatheme-greybird
-
-echo "... done... "
-
-echo "install flatpaks ..."
-
-flatpak install -y flathub org.onlyoffice.desktopeditors
-flatpak install -y flathub org.zulip.Zulip
-flatpak install -y flathub com.spotify.Client
+#zypper in gtk3-metatheme-elementary
+#zypper in gtk3-metatheme-greybird
 
 echo "... done... "
