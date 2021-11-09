@@ -1,11 +1,11 @@
 export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
-sudo zypper ar -f http://packman.inode.at/suse/$DISTNAME/ Packman
-sudo zypper refresh
+zypper ar -f -cp 90 https://ftp.gwdg.de/pub/linux/misc/packman/suse/${DISTNAME} Packman
+zypper refresh
 
 ### The codecs stuff
 echo "Now for codecs; If asked, choose the option to change vendor to Packman repo"
 
-sudo zypper install \
+zypper install \
 ffmpeg \
 flash-player \
 gstreamer-plugins-bad \
@@ -34,3 +34,14 @@ x264
 rm -f ~/.cache/gstreamer-1.0/registry.*
 
 echo "... done..."
+
+echo "install flatpaks ..."
+
+flatpak install -y flathub com.spotify.Client
+flatpak install -y flathub com.discordapp.Discord
+flatpak install -y flathub org.gnome.Fractal
+#flatpak install -y flathub org.onlyoffice.desktopeditors
+#flatpak install -y flathub org.zulip.Zulip
+flatpak list
+
+echo "... done... "
