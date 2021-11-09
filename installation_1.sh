@@ -45,6 +45,7 @@ gummi \
 epiphany gnome-shell-search-provider-epiphany \
 evince-plugin-djvudocument \
 htop \
+intel-gpu-tools \
 iotop \
 ipe \
 julia julia-examples \
@@ -57,7 +58,7 @@ links \
 meld \
 mlocate \
 ncdu \
-OpenCPN-4.x-Base \
+OpenCPN-5.x-Base OpenCPN-weather_routing_pi \
 opi \
 owncloud-client \
 pandoc \
@@ -99,8 +100,8 @@ echo "... done... "
 
 echo "install flatpaks ..."
 
-flatpak install flathub org.onlyoffice.desktopeditors
-flatpak install flathub org.zulip.Zulip
-flatpak install flathub com.spotify.Client
+flatpak install -y flathub org.onlyoffice.desktopeditors
+flatpak install -y flathub org.zulip.Zulip
+flatpak install -y flathub com.spotify.Client
 
 echo "... done... "
