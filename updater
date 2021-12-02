@@ -4,7 +4,14 @@
 # Delete old snapshots
 #sudo snapper cleanup timeline
 sudo snapper cleanup number
-sudo snapper cleanup empty-pre-post 
+sudo snapper cleanup empty-pre-post
+
+# backup, using the SpiderOak ONE backup tool …
+# don't use --headless, it won't do the job (for me, at least)
+# https://spideroak.support/hc/en-us/articles/115004794506
+SpiderOakONE --batchmode --verbose;
+# https://spideroak.support/hc/en-us/articles/115001893323
+SpiderOakONE --purge-historical-versions h3,d7,y100 --verbose;
 
 # stop f*cking PackageKit from interfering the process
 sudo systemctl stop packagekit
@@ -15,7 +22,7 @@ sudo zypper refresh
 # create an overview over all possible updates
 sudo zypper lu
 # best possible update command, I think
-sudo zypper dup --no-allow-vendor-change -y 
+sudo zypper dup --no-allow-vendor-change -y
 # re-installs default packages
 #sudo zypper install-new-recommends
 
@@ -34,7 +41,7 @@ sudo rm -rf ~/.cache/gnome-builder/tags/share/flatpak/repo/tmp/*
 # makes the database behind 'locate'
 sudo updatedb
 
-# BTRFS balancer 
+# BTRFS balancer
 echo -e "/ default subvolume:"
 sudo btrfs subvolume get-default /
 echo -e "\n"
