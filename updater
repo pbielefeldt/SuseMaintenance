@@ -55,6 +55,11 @@ sudo snapper list
 echo -e "\n"
 sudo btrfs fi df /
 
+# show orphaned packages (do after upgrade)
+# see https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-sw-cl.html#sec-zypper-softup-orphaned
+#sudo zypper packages --orphaned
+#sudo zypper packages --unneeded
+
 # show if some processes are running that were update right now (→ restart)
 sudo zypper ps -s
 
