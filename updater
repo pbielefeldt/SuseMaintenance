@@ -11,7 +11,9 @@ sudo snapper cleanup empty-pre-post
 # https://spideroak.support/hc/en-us/articles/115004794506
 SpiderOakONE --batchmode --verbose;
 # https://spideroak.support/hc/en-us/articles/115001893323
-SpiderOakONE --purge-historical-versions h3,d7,y100 --verbose;
+# keep one version per hour for the last 12 hours, one daily for
+# 30 days, and one annual version for 30 years
+SpiderOakONE --purge-historical-versions h12,d30,y30 --verbose;
 
 # stop f*cking PackageKit from interfering the process
 sudo systemctl stop packagekit
