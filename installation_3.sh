@@ -1,6 +1,7 @@
 ### Still to do manually:
 # Set up Dropbox
-# Skype (skype4pidgin is already there)
+
+# sudo zypper ar -f https://repo.skype.com/rpm/stable Skype
 # Spotify
 # Tor Browser
 

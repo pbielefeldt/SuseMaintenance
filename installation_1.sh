@@ -61,7 +61,7 @@ opi \
 owncloud-client \
 pandoc \
 qt-creator \
-root6 \
+root6 root6-devel geant4-vmc geant4-vmc-devel\
 rhythmbox \
 screenfetch \
 sensors \
@@ -73,6 +73,7 @@ xmoto \
 xournalpp \
 zygrib \
 
+perl-Parse-RecDescent
 
 ### These were disabled for now since they aren't officially provided
 #feedreader \
