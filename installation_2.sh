@@ -5,29 +5,17 @@ zypper refresh
 ### The codecs stuff
 echo "Now for codecs; If asked, choose the option to change vendor to Packman repo"
 
-zypper install \
+zypper install --no-recommends \
 ffmpeg \
-flash-player \
-gstreamer-plugins-bad \
-gstreamer-plugins-bad-orig-addon \
-gstreamer-plugins-base \
 gstreamer-plugins-good \
 gstreamer-plugins-good-extra \
 gstreamer-plugins-libav \
-gstreamer-plugins-ugly \
-gstreamer-plugins-ugly-orig-addon \
-libavcodec56 \
-libavcodec57 \
-libavcodec58 \
-libavdevice56 \
-libavdevice57 \
-#libavdevice58 \
-libavformat56 \
-libavformat57 \
-libavformat58 \
-libx264-152 \
-libx265-151 \
-x264
+gstreamer-plugins-ugly #\
+#libx264-152 \
+#libx265-151 \
+#x264
+
+zypper install gstreamer-1.20-plugin-openh264
 
 # Note: This is a workaround to make Totem and the like
 # recognise the changes [https://bugzilla.redhat.com/show_bug.cgi?id=858538#c1]
@@ -38,10 +26,12 @@ echo "... done..."
 echo "install flatpaks ..."
 
 flatpak install -y flathub com.spotify.Client
-flatpak install -y flathub com.discordapp.Discord
+#flatpak install -y flathub com.discordapp.Discord
 flatpak install -y flathub org.gnome.Fractal
 #flatpak install -y flathub org.onlyoffice.desktopeditors
 #flatpak install -y flathub org.zulip.Zulip
+flatpak install -y flathub com.github.qarmin.czkawka
+flatpak install -y flathub us.zoom.Zoom
 flatpak list
 
 echo "... done... "

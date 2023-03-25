@@ -13,6 +13,7 @@ echo "Please make sure the distname is correct. Automatically assumed distname i
 echo $DISTNAME
 
 ### Addings the desired repositories (make sure the version of your release fits)
+zypper ar -f -cp 94 http://codecs.opensuse.org/openh264/openSUSE_Leap "Open h264"
 zypper ar -f http://download.opensuse.org/repositories/games/$DISTNAME/ "Games"
 zypper ar -f http://download.opensuse.org/repositories/graphics/$DISTNAME/ "Graphics"
 zypper ar -f http://download.opensuse.org/repositories/science/$DISTNAME/ "Science"
@@ -31,7 +32,6 @@ zypper refresh
 
 ### Install software I like:
 zypper install \
-0ad \
 chromium \
 clisp \
 fetchmsttfonts \
@@ -65,14 +65,9 @@ root6 root6-devel geant4-vmc geant4-vmc-devel\
 rhythmbox \
 screenfetch \
 sensors \
-soundconverter \
-supertuxkart \
 whois \
-wxMaxima \
-xmoto \
 xournalpp \
 zygrib \
-
 perl-Parse-RecDescent
 
 ### These were disabled for now since they aren't officially provided
@@ -81,6 +76,7 @@ perl-Parse-RecDescent
 #gespeaker \
 
 ### disabled because unwanted at the moment...
+#0ad \
 #blender \
 #corebird \
 #dropbox nautilus-extension-dropbox \
@@ -89,9 +85,13 @@ perl-Parse-RecDescent
 #pidgin libpurple-plugin-skypeweb \
 #skype4pidgin \
 #subversion \
+#soundconverter \
+#supertuxkart \
 #tlp \
 #pitivi \
+#wxMaxima \
 #xmoto \
+
 
 ### Some nice themes
 #zypper in gtk3-metatheme-elementary
