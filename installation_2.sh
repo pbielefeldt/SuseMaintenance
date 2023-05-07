@@ -1,4 +1,6 @@
+#!/usr/bin/sh
 export DISTNAME=`lsb_release -d | sed -r -e 's/Description:[\t]+//' -e 's/[ ][(](.*)//' -e 's/[ ]/_/g'`
+
 zypper ar -f -cp 90 https://ftp.gwdg.de/pub/linux/misc/packman/suse/${DISTNAME} Packman
 zypper refresh
 

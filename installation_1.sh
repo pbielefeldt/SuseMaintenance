@@ -1,3 +1,5 @@
+#!/usr/bin/sh
+
 ### Before we start, update the system:
 zypper ref
 zypper lu
@@ -13,20 +15,18 @@ echo "Please make sure the distname is correct. Automatically assumed distname i
 echo $DISTNAME
 
 ### Addings the desired repositories (make sure the version of your release fits)
-zypper ar -f -cp 94 http://codecs.opensuse.org/openh264/openSUSE_Leap "Open h264"
-zypper ar -f http://download.opensuse.org/repositories/games/$DISTNAME/ "Games"
-zypper ar -f http://download.opensuse.org/repositories/graphics/$DISTNAME/ "Graphics"
-zypper ar -f http://download.opensuse.org/repositories/science/$DISTNAME/ "Science"
-#zypper ar -f http://download.opensuse.org/repositories/Application:/Geo/$DISTNAME/ "Geo"
-zypper ar -f http://download.opensuse.org/repositories/Application:/Geo:/OpenCPN/$DISTNAME/ "openCPN/Geo"
-zypper ar -f http://download.opensuse.org/repositories/Application:/Geo/$DISTNAME/ "ZYGrib/Geo"
+zypper ar -f -cp  84 http://codecs.opensuse.org/openh264/openSUSE_Leap "Open h264"
 
-#zypper ar -f http://download.opensuse.org/repositories/isv:ownCloud:desktop/$DISTNAME/isv:ownCloud:desktop.repo "isvOwnCloud"
-rpm --import https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/openSUSE_Leap_15.2/repodata/repomd.xml.key
-zypper ar -f https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/${DISTNAME}/ "OwnCloud"
-#zypper ar -r https://mega.nz/linux/MEGAsync/$DISTNAME/ "MegaSync"
+zypper ar -f -cp 115 http://download.opensuse.org/repositories/science/$DISTNAME/ "Science"
+zypper ar -f -cp 116 http://download.opensuse.org/repositories/graphics/$DISTNAME/ "Graphics"
+zypper ar -f -cp 117 http://download.opensuse.org/repositories/games/$DISTNAME/ "Games"
 
-### Changes to the system are only of continued effect if you trust the keys
+zypper ar -f -cp 124 https://download.opensuse.org/repositories/Application:/Geo:/OpenCPN/15.4/ "openCPN"
+zypper ar -f -cp 135 https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/$DISTNAME/ "OwnCloud"
+rpm --import https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/$DISTNAME/repodata/repomd.xml.key
+zypper ar -f -cp 136 https://mega.nz/linux/repo/$DISTNAME/ "MegaSync"
+rpm --import https://mega.nz/linux/repo/$DISTNAME/repodata/repomd.xml.key
+
 echo "Repos added. Now for refreshing the system... In most cases you will 'always accept' keys."
 zypper refresh
 
@@ -67,7 +67,7 @@ screenfetch \
 sensors \
 whois \
 xournalpp \
-zygrib \
+xygrib \
 perl-Parse-RecDescent
 
 ### These were disabled for now since they aren't officially provided
