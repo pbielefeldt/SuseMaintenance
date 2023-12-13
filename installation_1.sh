@@ -34,6 +34,7 @@ zypper refresh
 zypper install \
 chromium \
 clisp \
+davfs2 \
 fetchmsttfonts \
 git gitg \
 gnome-builder \
