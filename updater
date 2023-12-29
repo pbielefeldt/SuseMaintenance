@@ -23,7 +23,7 @@ sudo zypper refresh
 # create an overview over all possible updates
 sudo zypper lu
 # best possible update command, I think
-sudo zypper dup --no-allow-vendor-change -y
+sudo zypper --non-interactive update
 # re-installs default packages
 #sudo zypper install-new-recommends
 
