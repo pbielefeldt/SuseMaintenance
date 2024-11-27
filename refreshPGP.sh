@@ -10,13 +10,14 @@
 ####
 
 # all keys are listed here (omit the "0x")
-declare -a keylist=("00000001" "00000002")
+declare -a keylist=("50175350" "3BED6553" "696057AB" "72BCBBF5")
 
 # path to store to
-declare CERTPATH=~/Sammlung/Gesicherte_Zertifikate/PGPKeys/
+declare CERTPATH=~/Sammlung/PGPKeys
 
 # Keyserver to use
-export KEYSERV="keyserver.opensuse.org"
+export KEYSERV="pgp.surfnet.nl"
+#export KEYSERV="hkp://hkps.pool.sks-keyservers.net"
 
 for KEY in "${keylist[@]}"
 do
@@ -24,9 +25,11 @@ do
 	gpg --default-key $KEY --update-trustdb					# renews the trust db
 	gpg --armor --export $KEY > ${CERTPATH}/0x${KEY}_pub.asc 		# exports the latest public key
 	gpg --armor --export-secret-keys $KEY > ${CERTPATH}/0x${KEY}_prv.asc	# exports the latest public key
-	gpg --keyserver $KEYSERV  --send-keys $KEY 				# syncs with the public servers
+	gpg --keyserver $KEYSERV --send-keys $KEY 				# syncs with the public servers
 	echo "done for key "$KEY
 done
+
+gpg --export-ownertrust > ${CERTPATH}/ownertrust.txt
 
 echo "bye."
 exit
