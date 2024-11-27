@@ -37,3 +37,7 @@ flatpak install -y flathub us.zoom.Zoom
 flatpak list
 
 echo "... done... "
+
+juliaup add release~x64
+juliaup default release~x64
+julia --version

@@ -47,7 +47,7 @@ htop \
 intel-gpu-tools \
 iotop \
 ipe \
-julia julia-examples \
+juliaup \
 latexila \
 texlive-scheme-basic \
 texlive-animate texlive-appendixnumberbeamer texlive-bbm texlive-bbm-macros texlive-bbold texlive-boxedminipage texlive-cleveref texlive-fontspec texlive-glossaries texlive-glossaries-english texlive-glossaries-german texlive-import texlive-newtx texlive-standalone texlive-todonotes texlive-units texlive-xtab \
